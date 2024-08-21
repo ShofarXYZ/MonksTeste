@@ -1269,7 +1269,7 @@
               <div class="clearfix"></div>
               <div class="col-lg-12 text-center">
                 <div id="success"></div>
-                <button type="submit" class="btn btn-xl">Enviar Mensagem</button>
+                <button type="submit" class="btn btn-xl" id="orcamento_form_submit">Enviar Mensagem</button>
               </div>
             </div>
           </form>
@@ -2364,15 +2364,33 @@
       });
     }, 5000);
 
+    // Evento - Botão Orcamento para Inicio Formulario
     window.dataLayer = window.dataLayer || [];
 
     document.getElementById('orcamento_form_start').addEventListener('click', function() {
         window.dataLayer.push({
             event: 'orcamento_form_start'
-        });
-        console.log('Evento orcamento_form_start disparado');
+        });        
     });  
 
+    // Evento - Botão Enviar Mensagem do Formulário 
+    window.dataLayer = window.dataLayer || [];
+
+    document.getElementById('orcamento_form_submit').addEventListener('click', function() {
+     
+        var name =  document.getElementById('name').value;
+        var email = document.getElementById('email').value;
+        var phone = document.getElementById('phone').value;
+        
+        window.dataLayer.push({
+            event: 'orcamento_form_submit',
+            formData: {
+                name: name,
+                email: email,
+                phone: phone
+            }
+        });        
+    });
 
   </script>
 
@@ -2384,4 +2402,3 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </body>
 
 </html>
-
